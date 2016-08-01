@@ -1,0 +1,20 @@
+[alias]
+	hist = log --pretty=format:\"[%h] %ae, %ad: %s%d\" --graph --date=iso-strict
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	unstage = reset HEAD
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+	keepBackup = false
+[diff]
+	tool = vimdiff
+[user]
+	name = Oleksii Tsvietnov
+	email = me@vorakl.name
+[push]
+	default = simple
