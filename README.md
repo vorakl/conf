@@ -10,7 +10,7 @@
 
 Open a particular directory for details
 
-## Useful command line tools
+### Useful command line tools
 
 * tig (Git repo manager)
 * jq (JSON parser)
