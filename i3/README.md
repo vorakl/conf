@@ -2,8 +2,8 @@
 
 ### Details
 
-Start/Stop automatically after login on tty1 from '~/.bash_profile' by running 'startx'
-There is no gdm/lightdm/etc !
+Start/Stop automatically after login on tty1 from '~/.bash_profile' by running 'startx'.
+There is no gdm/lightdm/etc!
 After that, startx follows ~/.Xclients and does next:
 
 * sets default terminal and editor for i3
@@ -11,7 +11,7 @@ After that, startx follows ~/.Xclients and does next:
 * sets wallpapper for i3
 * runs composite manager for tranparency, etc
 * runs redshift for changing colors' temperature accordingly to a day time
-* launchs i3 under ssh-agent
+* launches i3 under ssh-agent
 
 Eventually, i3 runs network manager applet and finishes bootstrapping.
 Essential configuration tools are available via hotkeys (Win + Ctrl + S) for:
