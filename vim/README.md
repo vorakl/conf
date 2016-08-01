@@ -1,0 +1,5 @@
+# Essential configuration
+
+### Files
+
+* ~/.vimrc

@@ -14,7 +14,6 @@ if [ "$TERM" == "xterm" ]; then
 fi
 
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
-export GOPATH=$HOME/dev/go
 export EDITOR=vim
 
 alias v='vim'
