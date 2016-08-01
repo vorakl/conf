@@ -17,5 +17,5 @@ Open a particular directory for details
 * tomastomecek/sen (TUI for docker engine)
 * ps_mem (Details about memory utilisation)
 * apg (Password generator)
-* htop
-* dstat
+* htop (process viewer)
+* dstat (system resource statistics)
