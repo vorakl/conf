@@ -3,7 +3,7 @@
 ### The basis
 
 * Linux Fedora
-* i3 window manager
+* i3wm
 * BASH
 * MC
 * Vim
