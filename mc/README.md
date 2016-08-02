@@ -9,4 +9,4 @@
 
 * ~/.config/mc/ini
 * ~/.config/mc/panels.ini
-* ~/.config/mc/skins/yadt.ini
+* /usr/share/mc/skins/yadt.ini
