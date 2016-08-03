@@ -281,4 +281,6 @@ for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
 
 # Network Manager in tray
 exec --no-startup-id nm-applet
+# Control colors' temperature accordingly to a day time. Location: Munich, Germany
+exec --no-startup-id redshift -l 48.12:11.60 -t 5500:4900
 

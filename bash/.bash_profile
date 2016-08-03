@@ -5,4 +5,4 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-[ "$(tty)" = "/dev/tty1" ] && { startx; pgrep redshift &>/dev/null && pkill -9 redshft; exit; }
+[ "$(tty)" = "/dev/tty1" ] && { startx; pgrep redshift &>/dev/null && pkill -9 redshift; exit; }
