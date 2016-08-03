@@ -242,7 +242,7 @@ mode "$settings" {
         bindsym a exec lxappearance, mode "default"
         # it's useful to keep "floating: volume's window in the scratchpad
         bindsym v exec pavucontrol, mode "default"
-        # to confire Network Manager
+        # to configure Network Manager
         bindsym n exec nm-connection-editor, mode "default"
 
         # back to normal: Enter or Escape
