@@ -238,9 +238,11 @@ mode "$ims" {
 bindsym $mod+Ctrl+s mode "$settings"
 set $settings (a)ppearance, (v)olume, (n)etwork
 mode "$settings" {
+        # to configure the appearance of all the whole interface
         bindsym a exec lxappearance, mode "default"
         # it's useful to keep "floating: volume's window in the scratchpad
         bindsym v exec pavucontrol, mode "default"
+        # to confire Network Manager
         bindsym n exec nm-connection-editor, mode "default"
 
         # back to normal: Enter or Escape
