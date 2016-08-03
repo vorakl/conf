@@ -10,9 +10,10 @@
 #                                  general                               #
 ##########################################################################
 
-# set mod key (Mod1=<Alt>, Mod4=<Super>)
+# set mod key (Mod1=<Alt>, Mod4=<Win>)
 set $mod Mod4
 
+# set tabbed mode by default. It looks like tasks pannel on an each screen
 workspace_layout tabbed
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 1000 ms
@@ -33,35 +34,26 @@ popup_during_fullscreen smart
 # kill focused window
 bindsym $mod+q kill
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
 
-# alternatively, you can use the cursor keys:
+# change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h; exec notify-send 'split horizontally'
+bindsym $mod+h split h; exec notify-send 'horizontal orientation'
 
 # split in vertical orientation
-bindsym $mod+v split v; exec notify-send 'split vertically'
+bindsym $mod+v split v; exec notify-send 'vertical orientation'
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -84,20 +76,26 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+d focus child
 
-# Make the currently focused window a scratchpad
+# make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
 # show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+
 ##########################################################################
 #                                workspaces                              #
 ##########################################################################
 
+# main ws without binding to it any applications
 set $ws1 "1  "
+# all browsers
 set $ws2 "2  "
+# all mail clients if any
 set $ws3 "3  "
+# all instant messanger
 set $ws4 "4  "
+# any media applications
 set $ws5 "5  "
 set $ws6 "6"
 set $ws7 "7"
@@ -166,12 +164,6 @@ mode "$mode_system" {
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -187,7 +179,7 @@ mode "resize" {
 ##########################################################################
 
 # Start i3bar to display a workspace bar
-#bindsym $mod+Shift+b bar mode toggle
+bindsym $mod+Shift+b bar mode toggle
 bar {
         position bottom
         status_command i3status
@@ -273,7 +265,7 @@ for_window [instance="xfce4-panel"] floating enable
 for_window [instance="wrapper-1.0"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
-#for_window [instance="skype" title="Skype™|Call with|File Transfers"] floating disable
+for_window [instance="skype" title="Skype™|Call with|File Transfers"] floating disable
 
 
 ##########################################################################
