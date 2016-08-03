@@ -17,7 +17,7 @@ workspace_layout tabbed
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 1000 ms
 
-# font for window titles. 
+# font for window titles and ibar 
 font pango:Cantarell Bold 12
 
 ##########################################################################
@@ -86,8 +86,8 @@ bindsym $mod+d focus child
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
-#
-# # Show the first scratchpad window
+
+# show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
 ##########################################################################
@@ -132,7 +132,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
-# Navigate workspaces next / previous / back_and_forth
+# navigate workspaces next / previous / back_and_forth
 bindsym $mod+x workspace next
 bindsym $mod+z workspace prev
 bindsym $mod+c workspace back_and_forth
@@ -219,11 +219,14 @@ mode "$browsers" {
         bindsym Escape mode "default"
 }
 
-# instant messanges
+# instant messangers
 bindsym $mod+Ctrl+i mode "$ims"
 set $ims (h)ipchat, (s)kype
 mode "$ims" {
         bindsym h exec hipchat, mode "default"
+        # put a tick in skype's configuration on "run minimized"
+        # this hides "floating" main window in tray and keep opened a "tiling" chat window
+        # then toggle main window hide/unhide by cllicking on icon in tray
         bindsym s exec skype, mode "default"
 
         # back to normal: Enter or Escape
@@ -236,6 +239,7 @@ bindsym $mod+Ctrl+s mode "$settings"
 set $settings (a)ppearance, (v)olume, (n)etwork
 mode "$settings" {
         bindsym a exec lxappearance, mode "default"
+        # it's useful to keep "floating: volume's window in the scratchpad
         bindsym v exec pavucontrol, mode "default"
         bindsym n exec nm-connection-editor, mode "default"
 
