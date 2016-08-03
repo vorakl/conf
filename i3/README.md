@@ -7,7 +7,7 @@ There is no gdm/lightdm/etc!
 After that, startx follows ~/.Xclients and does next:
 
 * sets default terminal and editor for i3
-* sets keyboard layout and options
+* sets keyboard layout and options (support 2 languages, etc)
 * sets wallpapper for i3
 * runs composite manager for tranparency, etc
 * runs redshift for changing colors' temperature accordingly to a day time
@@ -40,3 +40,4 @@ and a hotkey (Win + Shift + M)
 * ~/.config/i3/config
 * ~/bin/set-monitors.sh
 * ~/.i3status.conf
+

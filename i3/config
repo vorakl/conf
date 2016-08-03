@@ -21,6 +21,11 @@ force_display_urgency_hint 1000 ms
 # font for window titles and ibar 
 font pango:Cantarell Bold 12
 
+# a bigger border to make resing by mouse a bit easier
+new_window normal 4
+new_float normal 4
+hide_edge_borders both
+
 ##########################################################################
 #                                   focus                                #
 ##########################################################################
@@ -248,6 +253,9 @@ bindsym $mod+Ctrl+m exec evolution
 # video player
 bindsym $mod+Ctrl+v exec vlc
 
+# take a screenshot
+bindsym $mod+Print exec xfce4-screenshooter
+
 # assign applications to workspaces
 assign [instance="Navigator"] $ws2
 assign [class="google-chrome-beta"] $ws2
@@ -265,7 +273,6 @@ for_window [instance="xfce4-panel"] floating enable
 for_window [instance="wrapper-1.0"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
-for_window [instance="skype" title="Skype™|Call with|File Transfers"] floating disable
 
 
 ##########################################################################
