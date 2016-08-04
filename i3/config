@@ -201,7 +201,10 @@ bar {
 bindsym $mod+Ctrl+Return exec i3-sensible-terminal
 
 # start dmenu (a program launcher)
-bindsym $mod+Ctrl+d exec dmenu_run
+bindsym $mod+Ctrl+d exec dmenu_run -i -l 10
+
+# start dmenu for .Desktop files (a program launcher)
+bindsym $mod+Ctrl+r exec i3-dmenu-desktop --dmenu='dmenu -i -l 10'
 
 # application groups
 
@@ -276,6 +279,7 @@ for_window [instance="wrapper-1.0"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
 for_window [instance="xfce4-terminal" title="^Update packages$"] floating enable
+for_window [Class="Vinagre"] floating enable
 
 
 ##########################################################################
