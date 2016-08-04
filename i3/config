@@ -187,7 +187,9 @@ mode "resize" {
 bindsym $mod+Shift+b bar mode toggle
 bar {
         position bottom
-        status_command i3status
+        #status_command i3status
+        # Uses py3status (dbus notificationa, updates every second) 
+        status_command py3status -b -c ~/.i3status.conf -n 1
 }
 
 
@@ -273,6 +275,7 @@ for_window [instance="xfce4-panel"] floating enable
 for_window [instance="wrapper-1.0"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
+for_window [instance="xfce4-terminal" title="^Update packages$"] floating enable
 
 
 ##########################################################################

@@ -32,6 +32,7 @@ and a hotkey (Win + Shift + M)
 * pavucontrol
 * lxappearance
 * network manager
+* py3status
 
 ### Files
 
