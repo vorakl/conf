@@ -15,7 +15,7 @@ After that, startx follows ~/.Xclients and does next:
 Eventually, i3 runs:
 
 * network manager applet
-* runs redshift for changing colors' temperature accordingly to a day time
+* redshift for changing colors' temperature accordingly to a day time
 
 Essential configuration tools are available via hotkeys (Win + Ctrl + S) for:
 
