@@ -10,10 +10,13 @@ After that, startx follows ~/.Xclients and does next:
 * sets keyboard layout and options (support 2 languages, etc)
 * sets wallpapper for i3
 * runs composite manager for tranparency, etc
-* runs redshift for changing colors' temperature accordingly to a day time
 * launches i3 under ssh-agent
 
-Eventually, i3 runs network manager applet and finishes bootstrapping.
+Eventually, i3 runs:
+
+* network manager applet
+* runs redshift for changing colors' temperature accordingly to a day time
+
 Essential configuration tools are available via hotkeys (Win + Ctrl + S) for:
 
 * Volume Control (pavucontrol)
