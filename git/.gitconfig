@@ -2,7 +2,7 @@
 	hist = log --pretty=format:\"[%h] %ae, %ad: %s%d\" --graph --date=iso-strict
 	co = checkout
 	ci = commit
-	st = status
+	st = status -sb
 	br = branch
 	unstage = reset HEAD
 [merge]
