@@ -43,5 +43,6 @@ and a hotkey (Win + Shift + M)
 * ~/.Xclients
 * ~/.config/i3/config
 * ~/bin/set-monitors.sh
+* ~/bin/ya-translate.sh
 * ~/.i3status.conf
 
