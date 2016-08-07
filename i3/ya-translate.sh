@@ -12,7 +12,7 @@ lang="$1"
 [ -z "${lang}" ] && { echo "Set the direction of a translation as a first parameter in the command line" >&2; exit 1; }
 
 # The rest of the string is a text for translation
-text="$(xsel -oc)"
+text="$(xsel -o)"
 
 if [ -n "$text" ]; then
     resCurl=$(curl -sL -d "text=${text}" "https://translate.yandex.net/api/v1.5/tr.json/translate?key=${YA_TRANSLATE_API}&lang=${lang}")

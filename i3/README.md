@@ -30,6 +30,7 @@ and a hotkey (Win + Shift + M)
 
 * redshift
 * xcompmgr
+* xsel
 * feh
 * setxkbmap
 * pavucontrol
