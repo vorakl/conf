@@ -261,6 +261,12 @@ bindsym $mod+Ctrl+v exec vlc
 # take a screenshot
 bindsym $mod+Print exec xfce4-screenshooter
 
+# translate
+# to RU
+bindsym $mod+Shift+l exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh ru
+# to EN
+bindsym $mod+Shift+k exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh en
+
 # assign applications to workspaces
 assign [instance="Navigator"] $ws2
 assign [class="google-chrome-beta"] $ws2
