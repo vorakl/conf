@@ -1,22 +1,9 @@
 #!/bin/bash
 
-# Set applications for for i3-sensible-terminal, i3-sensible-editor, i3-sensible-pager
-export TERMINAL=/usr/bin/xfce4-terminal
+# Set applications for for i3-sensible-{terminal,editor,pager}
+export TERMINAL=xfce4-terminal
 export EDITOR=vim
 export PAGER=less
 
-# Run X11 specific tools
-
-# English and Russian layout, Alt+Space for switching 
-setxkbmap -layout "us,ru" -option "grp:alt_space_toggle,grp_led:scroll,terminate:ctrl_alt_bksp"
-
-# Setting up a background
-#xsetroot -solid "#333333"
-feh --bg-fill '/home/vorakl/Pictures/bg1.jpg'
-
-# Composite manager (for transparency)
-xcompmgr -Cc &
-
-# Run i3wm. Other GUI tools are started from i3 config file
+# Run i3wm
 exec $SSH_AGENT /usr/bin/i3 &> /dev/null
-
