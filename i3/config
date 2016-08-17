@@ -1,5 +1,7 @@
 # i3 config file (v4)
 #
+# (c) Oleksii Tsvietnov, me@vorakl.name
+#
 # This configuration file is based on:
 # - https://www.reddit.com/r/i3wm/comments/3tdpkf/how_i_do_i3_a_how_to_of_sorts_my_config_included/
 # - https://gist.github.com/diyan/6192878
@@ -183,15 +185,15 @@ mode "resize" {
 #                                bar settings                            #
 ##########################################################################
 
-# Start i3bar to display a workspace bar
+# start i3bar to display a workspace bar
 bindsym $mod+Shift+b bar mode toggle
 bar {
         position bottom
+        tray_output primary
         #status_command i3status
         # Uses py3status (dbus notificationa, updates every second) 
         status_command py3status -b -c ~/.i3status.conf -n 5
 }
-
 
 ##########################################################################
 #                                applications                            #
@@ -237,7 +239,7 @@ mode "$ims" {
 }
 
 # settings 
-bindsym $mod+Ctrl+s mode "$settings"
+bindsym $mod+Shift+s mode "$settings"
 set $settings (a)ppearance, (v)olume, (n)etwork
 mode "$settings" {
         # to configure the appearance of all the whole interface
@@ -293,10 +295,7 @@ for_window [Class="Vinagre"] floating enable
 ##########################################################################
 
 # Sets an active monitor
-exec_always --no-startup-id ~/bin/set-monitors.sh && sleep 2 && feh --bg-fill '/home/vorakl/Pictures/bg1.jpg'
-
-# English and Russian layout, Alt+Space for switching 
-exec_always --no-startup-id setxkbmap -layout "us,ru" -option "grp:alt_space_toggle,grp_led:scroll,terminate:ctrl_alt_bksp"
+exec_always --no-startup-id ~/bin/set-monitors.sh && sleep 2 && feh --bg-fill '/home/vorakl/Pictures/bg.jpg'
 
 # Network Manager in tray
 exec --no-startup-id nm-applet

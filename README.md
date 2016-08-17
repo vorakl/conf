@@ -2,11 +2,15 @@
 
 ### The basis
 
+My working environment is built around i3 window manager which is pretty functional, 
+fast and simple. It really helps to focus on what you do rather than where you do it. 
+So, the most important parts are  
+
 * Linux Fedora
 * i3 window manager
-* BASH
-* MC
-* Vim
+* bash
+* mc
+* vim
 
 Open a particular directory for details
 
