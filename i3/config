@@ -189,7 +189,6 @@ mode "resize" {
 bindsym $mod+Shift+b bar mode toggle
 bar {
         position bottom
-        tray_output primary
         #status_command i3status
         # Uses py3status (dbus notificationa, updates every second) 
         status_command py3status -b -c ~/.i3status.conf -n 5
@@ -295,7 +294,7 @@ for_window [Class="Vinagre"] floating enable
 ##########################################################################
 
 # Sets an active monitor
-exec_always --no-startup-id ~/bin/set-monitors.sh && sleep 2 && feh --bg-fill '/home/vorakl/Pictures/bg.jpg'
+exec_always --no-startup-id ~/bin/set-monitors.sh && feh --bg-fill '/home/vorakl/Pictures/bg.jpg'
 
 # Network Manager in tray
 exec --no-startup-id nm-applet

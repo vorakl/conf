@@ -26,8 +26,10 @@ Essential configuration tools are available via hotkeys (Win + Shift + S) for:
 * Network Connection (nm-connection-editor)
 * Appearance (lxappearance)
 
-Setting up monitor layouts is done using custom shell script ~/bin/set-monitors.sh 
-and a hotkey (Win + Shift + M)
+Setting up monitor layouts is done using automaticaly by the custom shell 
+script ~/bin/set-monitors.sh (don't forget SUID bit on it!) and an udev rule. 
+Just in case, it's also available for a manual use via a hotkey (Win + Shift + M)
+Fixing paths in 99-monitor-hotplug.rules is required!
 
 ### Required tools
 
@@ -51,3 +53,4 @@ and a hotkey (Win + Shift + M)
 * ~/.i3status.conf
 * /etc/X11/xorg.conf.d/00-keyboard.conf
 * /etc/X11/xorg.conf.d/70-synaptics.conf
+* /etc/udev/rules.d/99-monitor-hotplug.rules
