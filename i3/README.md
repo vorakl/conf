@@ -27,8 +27,8 @@ Essential configuration tools are available via hotkeys (Win + Shift + S) for:
 * Appearance (lxappearance)
 
 Setting up monitor layouts is done using automaticaly by the custom shell 
-script ~/bin/set-monitors.sh (don't forget SUID bit on it!) and an udev rule. 
-Just in case, it's also available for a manual use via a hotkey (Win + Shift + M)
+script ~/bin/set-monitors.sh (don't forget SUID bit and  your user as an owneron it!)
+and an udev rule. Just in case, it's also available for a manual use via a hotkey (Win + Shift + M)
 Fixing paths in 99-monitor-hotplug.rules is required!
 
 ### Required tools
