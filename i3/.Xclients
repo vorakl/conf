@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Set applications for for i3-sensible-{terminal,editor,pager}
+# Set applications for i3-sensible-{terminal,editor,pager}
 export TERMINAL=xfce4-terminal
 export EDITOR=vim
 export PAGER=less
