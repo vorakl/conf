@@ -28,6 +28,11 @@ new_window normal 4
 new_float normal 4
 hide_edge_borders both
 
+# Brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+
+
 ##########################################################################
 #                                   focus                                #
 ##########################################################################
