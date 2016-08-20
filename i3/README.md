@@ -31,7 +31,7 @@ script ~/bin/set-monitors.sh (don't forget SUID bit and  your user as an owneron
 and an udev rule. Just in case, it's also available for a manual use via a hotkey (Win + Shift + M)
 Fixing paths in 99-monitor-hotplug.rules is required!
 
-Brightness is configured via xbacklight tooli and native multimedia buttons
+Brightness is configured via xbacklight tool and native multimedia buttons on the keyboard
 
 
 ### Required tools
