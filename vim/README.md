@@ -3,3 +3,4 @@
 ### Files
 
 * ~/.vimrc
+* ~/.vim/colors/miromiro.vim
