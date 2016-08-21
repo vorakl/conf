@@ -8,7 +8,7 @@ set encoding=utf-8
 set fileencodings=utf-8
 set termencoding=utf-8
 
-colorscheme torte
+colorscheme miromiro
 set background=dark
 set synmaxcol=2048
 execute pathogen#infect()
