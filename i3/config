@@ -120,7 +120,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 # set monitors
-bindsym $mod+Shift+m exec --no-startup-id ~/bin/set-monitors.sh
+bindsym $mod+Shift+m exec --no-startup-id ~/bin/set-monitors-bg.sh
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -149,7 +149,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 # navigate workspaces next / previous / back_and_forth
 bindsym $mod+x workspace next
 bindsym $mod+z workspace prev
-bindsym $mod+c workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 ##########################################################################
 #                            shut down / restart                         #
@@ -302,8 +302,8 @@ for_window [Class="Vinagre"] floating enable
 #                                  autostart                             #
 ##########################################################################
 
-# Sets an active monitor
-exec_always --no-startup-id ~/bin/set-monitors.sh && feh --bg-fill '/home/vorakl/Pictures/bg.jpg'
+# Sets an active monitor and background
+exec_always --no-startup-id ~/bin/set-monitors-bg.sh
 
 # Network Manager in tray
 exec --no-startup-id nm-applet

@@ -1,1 +1,1 @@
-KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/vorakl/.Xauthority", RUN+="/home/vorakl/bin/set-monitors.sh"
+KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/vorakl/.Xauthority", RUN+="/home/vorakl/bin/set-monitors-bg.sh"
