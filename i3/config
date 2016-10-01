@@ -48,7 +48,7 @@ focus_follows_mouse true
 popup_during_fullscreen smart
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button2 kill
