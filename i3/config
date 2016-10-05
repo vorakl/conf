@@ -162,8 +162,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e mode "$mode_system"
 set $mode_system (l)ock, (e)xit, (s)uspend, (r)eboot, (p)ower
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock -d -I 5 -c 000000 -f && echo mem > /sys/power/state, mode "default"
-    bindsym s exec --no-startup-id "i3lock -d -c 000000 -f && echo mem > /sys/power/state; systemctl suspend", mode "default"
+    bindsym l exec --no-startup-id i3lock -n -I 5 -c 000000, mode "default"
+    bindsym s exec --no-startup-id "systemctl suspend", mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym p exec --no-startup-id systemctl poweroff, mode "default"
@@ -220,11 +220,12 @@ bindsym $mod+Ctrl+r exec i3-dmenu-desktop --dmenu='dmenu -i -l 10'
 
 # browsers
 bindsym $mod+Ctrl+b mode "$browsers"
-set $browsers (p)alemoon, (f)irefox, (c)hrom
+set $browsers (p)alemoon, (f)irefox, (c)hrom, (o)pera
 mode "$browsers" {
         bindsym p exec palemoon, mode "default"
         bindsym f exec firefox, mode "default"
         bindsym c exec google-chrome, mode "default"
+        bindsym o exec opera, mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -280,6 +281,7 @@ bindsym $mod+Shift+k exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.201608
 # assign applications to workspaces
 assign [instance="Navigator"] $ws2
 assign [class="google-chrome-beta"] $ws2
+assign [class="Opera"] $ws2
 assign [class="Evolution"] $ws3
 assign [class="Skype"] $ws4
 assign [instance="hipchat"] $ws4
