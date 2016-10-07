@@ -7,7 +7,17 @@
 # - https://gist.github.com/diyan/6192878
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
+#
+# Keyboards hot-keys have been a little changed against defaults.
+# The main idea behind the scene was to distinguish combinations for
+# launching application and manipulations on the environment.
+# So, basicaly, <Win+Shift+ > is used to control the environment and 
+# <Win+Ctrl+ > to launch applications in it. More over, I replaced
+# <Win+q> to <Win+Shift+q> bacause it's to close to <Win+1> and I was closing
+# apllications so many times accidentaly... and set <Win+Tab> for switching back
+# to a previous workplace because it's almost the same <Alt+tab> I had been using
+# for a long time...
+#
 ##########################################################################
 #                                  general                               #
 ##########################################################################
@@ -298,7 +308,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
 for_window [instance="xfce4-terminal" title="^Update packages$"] floating enable
 for_window [Class="Vinagre"] floating enable
-
+for_window [Class="Qemu-.*"] floating enable
 
 ##########################################################################
 #                                  autostart                             #
