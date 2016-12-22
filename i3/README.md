@@ -26,12 +26,17 @@ Essential configuration tools are available via hotkeys (Win + Shift + S) for:
 * Network Connection (nm-connection-editor)
 * Appearance (lxappearance)
 
-Setting up monitor layouts is done using automaticaly by the custom shell 
-script ~/bin/set-monitors.sh (don't forget SUID bit and  your user as an owneron it!)
+Setting up monitor layouts is done automaticaly by the custom shell 
+script ~/bin/set-monitors.sh (don't forget to set SUID bit and your user as an owner on it!)
 and an udev rule. Just in case, it's also available for a manual use via a hotkey (Win + Shift + M)
 Fixing paths in 99-monitor-hotplug.rules is required!
 
 Brightness is configured via xbacklight tool and native multimedia buttons on the keyboard
+
+Translation of texts from a Clipboard is done by Yandex translate (with help of ya-translate.sh).
+It's required getting the private API key on the Yandex translate web-site.
+Key hot-keys. directions of translation and language shoud be set in i3's config file accordingly
+to the existing example (look at # translation section)
 
 
 ### Required tools
