@@ -9,6 +9,7 @@ So, the most important parts are
 * Linux Fedora
 * i3 window manager
 * bash
+* tmux
 * mc
 * vim
 
