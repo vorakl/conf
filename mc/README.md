@@ -3,7 +3,7 @@
 ## Features
 
 * horisontal panels
-* ~~custom color skin~~ **UPDATE**: My skins (yadt256 and yadt256-defbg) were added to MidnightCommander and now are available in latest releases
+* ~~custom color skins~~ **UPDATE**: My skins (yadt256 and yadt256-defbg) were added to MidnightCommander and now are available in latest releases
 
 ### Files
 
