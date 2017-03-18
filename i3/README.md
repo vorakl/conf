@@ -3,7 +3,7 @@
 ### Details
 
 I removed all useless or over complicated layers and made it as simple as possible.
-That's why I trough away a login manager like GDM/LightDM/etc and run X session
+That's why I threw away a login manager like GDM/LightDM/etc and run X session
 automatically after logging in on the first terminal (tty1) in from '~/.bash_profile'
 by simply starting 'startx'. After that, startx follows ~/.Xclients and does next:
 
