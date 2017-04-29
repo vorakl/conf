@@ -7,7 +7,7 @@ Basically, my working environment is built around `Fedora Linux`_ and `i3 window
 I'm actively using console tools such as `Midnight Commander`_ for managing files and Vim_ for editing.
 Most of the time I work in a command line of Bash_ and over tmux_ (in case of a remote connection).
 
-Each component resides in a separate directory with all needed configuration files and the installation script.
+Each component resides in a separate directory with all needed configuration files, documentation and the installation script.
 
 .. Links
 
