@@ -51,6 +51,7 @@ to the existing example (look at # translation section)
 * lxappearance
 * network manager
 * py3status
+* notification-daemon
 
 ### Files
 

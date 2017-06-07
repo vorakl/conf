@@ -5,5 +5,8 @@ export TERMINAL=xfce4-terminal
 export EDITOR=vim
 export PAGER=less
 
+# Run a notification daemon
+/usr/libexec/notification-daemon &
+
 # Run i3wm
 exec $SSH_AGENT /usr/bin/i3 &> /dev/null
