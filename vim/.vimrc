@@ -17,6 +17,9 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
+set colorcolumn=80
+highlight ColorColumn ctermbg=grey guibg=grey
+
 set wildmenu
 set wcm=<Tab>
 menu Encoding.CP1251   :e ++enc=cp1251<CR>
