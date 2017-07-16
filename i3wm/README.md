@@ -25,6 +25,7 @@ Essential configuration tools are available via hotkeys (Win + Shift + S) for:
 * Volume Control (pavucontrol)
 * Network Connection (nm-connection-editor)
 * Appearance (lxappearance)
+* QT Appearance (qtconfig-qt4)
 
 Setting up monitor layouts is done automaticaly by the custom shell 
 script ~/bin/set-monitors.sh (don't forget to set SUID bit and your user as an owner on it!)
@@ -52,6 +53,7 @@ to the existing example (look at # translation section)
 * network manager
 * py3status
 * notification-daemon
+* copyq
 
 ### Files
 

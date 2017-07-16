@@ -244,13 +244,14 @@ mode "$browsers" {
 
 # instant messangers
 bindsym $mod+Ctrl+i mode "$ims"
-set $ims (h)ipchat, (s)kype
+set $ims (h)ipchat, (s)kype, smu(x)i
 mode "$ims" {
         bindsym h exec hipchat, mode "default"
         # put a tick in skype's configuration on "run minimized"
         # this hides "floating" main window in tray and keep opened a "tiling" chat window
         # then toggle main window hide/unhide by cllicking on icon in tray
         bindsym s exec skype, mode "default"
+        bindsym x exec smuxi-frontend-gnome, mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -259,10 +260,12 @@ mode "$ims" {
 
 # settings 
 bindsym $mod+Shift+s mode "$settings"
-set $settings (a)ppearance, (v)olume, (n)etwork
+set $settings (g)tk ppearance, (q)t appearence, (v)olume, (n)etwork
 mode "$settings" {
-        # to configure the appearance of all the whole interface
-        bindsym a exec lxappearance, mode "default"
+        # to configure the GTK appearance of all the whole interface
+        bindsym g exec lxappearance, mode "default"
+        # to configure the QT appearance of all the whole interface
+        bindsym q exec qtconfig-qt4, mode "default"
         # it's useful to keep "floating: volume's window in the scratchpad
         bindsym v exec pavucontrol, mode "default"
         # to configure Network Manager
@@ -326,3 +329,5 @@ exec --no-startup-id redshift -l 48.12:11.60 -t 5500:4900
 # Composite manager (for transparency)
 exec --no-startup-id xcompmgr -Cc
 
+# Time brakes
+exec --no-startup-id workrave
