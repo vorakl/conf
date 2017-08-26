@@ -6,7 +6,12 @@ export EDITOR=vim
 export PAGER=less
 
 # Run a notification daemon
-/usr/libexec/notification-daemon &
+( while true; do 
+    pkill notification-daemon
+    /usr/libexec/notification-daemon -r
+    sleep 1
+  done 
+) &
 
 # Run i3wm
 exec $SSH_AGENT /usr/bin/i3 &> /dev/null

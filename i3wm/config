@@ -23,7 +23,8 @@
 ##########################################################################
 
 # set mod key (Mod1=<Alt>, Mod4=<Win>)
-set $mod Mod4
+set $alt Mod1
+set $win Mod4
 
 # set tabbed mode by default. It looks like tasks pannel on an each screen
 workspace_layout tabbed
@@ -51,62 +52,62 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 #                                   focus                                #
 ##########################################################################
 
-# use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# use Mouse+$win to drag floating windows to their wanted position
+floating_modifier $win
 
 focus_follows_mouse true
 popup_during_fullscreen smart
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $win+Shift+q kill
 
 # The middle button and a modifer over any part of the window kills the window
-bindsym --whole-window $mod+button2 kill
+bindsym --whole-window $win+button2 kill
 
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $win+Left focus left
+bindsym $win+Down focus down
+bindsym $win+Up focus up
+bindsym $win+Right focus right
 
 # move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $win+Shift+Left move left
+bindsym $win+Shift+Down move down
+bindsym $win+Shift+Up move up
+bindsym $win+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h; exec notify-send 'horizontal orientation'
+bindsym $win+h split h; exec notify-send 'horizontal orientation'
 
 # split in vertical orientation
-bindsym $mod+v split v; exec notify-send 'vertical orientation'
+bindsym $win+v split v; exec notify-send 'vertical orientation'
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $win+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+t sticky toggle
+bindsym $win+s layout stacking
+bindsym $win+w layout tabbed
+bindsym $win+e layout toggle split
+bindsym $win+t sticky toggle
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $win+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $win+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $win+a focus parent
 
 # focus the child container
-bindsym $mod+d focus child
+bindsym $win+d focus child
 
 # make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $win+Shift+minus move scratchpad
 
 # show the first scratchpad window
-bindsym $mod+minus scratchpad show
+bindsym $win+minus scratchpad show
 
 
 ##########################################################################
@@ -130,48 +131,48 @@ set $ws9 "9"
 set $ws10 "10"
 
 # set monitors
-bindsym $mod+Shift+m exec --no-startup-id ~/bin/set-monitors-bg.sh
+bindsym $win+Shift+m exec --no-startup-id ~/bin/set-monitors-bg.sh
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $win+1 workspace $ws1
+bindsym $win+2 workspace $ws2
+bindsym $win+3 workspace $ws3
+bindsym $win+4 workspace $ws4
+bindsym $win+5 workspace $ws5
+bindsym $win+6 workspace $ws6
+bindsym $win+7 workspace $ws7
+bindsym $win+8 workspace $ws8
+bindsym $win+9 workspace $ws9
+bindsym $win+0 workspace $ws10
 
 # move to workspace with focused container
-bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+bindsym $win+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $win+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $win+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $win+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $win+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $win+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $win+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $win+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $win+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $win+Shift+0 move container to workspace $ws10; workspace $ws10
 
 # navigate workspaces next / previous / back_and_forth
-bindsym $mod+x workspace next
-bindsym $mod+z workspace prev
-bindsym $mod+Tab workspace back_and_forth
+bindsym $win+x workspace next
+bindsym $win+z workspace prev
+bindsym $win+Tab workspace back_and_forth
 
 ##########################################################################
 #                            shut down / restart                         #
 ##########################################################################
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $win+Shift+r restart
 
 # set shut down, restart and locking features
-bindsym $mod+Shift+e mode "$mode_system"
-set $mode_system (l)ock, (e)xit, (s)uspend, (r)eboot, (p)ower
-mode "$mode_system" {
+bindsym $win+Shift+e mode "$wine_system"
+set $wine_system (l)ock, (e)xit, (s)uspend, (r)eboot, (p)ower
+mode "$wine_system" {
     bindsym l exec --no-startup-id i3lock -n -I 5 -c 000000, mode "default"
     bindsym s exec --no-startup-id "systemctl suspend", mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
@@ -188,7 +189,7 @@ mode "$mode_system" {
 ##########################################################################
 
 # resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
+bindsym $win+r mode "resize"
 mode "resize" {
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
@@ -205,7 +206,7 @@ mode "resize" {
 ##########################################################################
 
 # start i3bar to display a workspace bar
-bindsym $mod+Shift+b bar mode toggle
+bindsym $win+Shift+b bar mode toggle
 bar {
         position bottom
         #status_command i3status
@@ -218,18 +219,18 @@ bar {
 ##########################################################################
 
 # start a terminal that is specified in TERMINAL env
-bindsym $mod+Ctrl+Return exec i3-sensible-terminal
+bindsym $win+Ctrl+Return exec i3-sensible-terminal
 
 # start dmenu (a program launcher)
-bindsym $mod+Ctrl+d exec dmenu_run -i -l 10
+bindsym $win+Ctrl+d exec dmenu_run -i -l 10
 
 # start dmenu for .Desktop files (a program launcher)
-bindsym $mod+Ctrl+r exec i3-dmenu-desktop --dmenu='dmenu -i -l 10'
+bindsym $win+Ctrl+r exec i3-dmenu-desktop --dmenu='dmenu -i -l 10'
 
 # application groups
 
 # browsers
-bindsym $mod+Ctrl+b mode "$browsers"
+bindsym $win+Ctrl+b mode "$browsers"
 set $browsers (p)alemoon, (f)irefox, (c)hrom, (o)pera
 mode "$browsers" {
         bindsym p exec palemoon, mode "default"
@@ -243,15 +244,14 @@ mode "$browsers" {
 }
 
 # instant messangers
-bindsym $mod+Ctrl+i mode "$ims"
+bindsym $win+Ctrl+i mode "$ims"
 set $ims (h)ipchat, (s)kype, smu(x)i
 mode "$ims" {
-        bindsym h exec hipchat, mode "default"
         # put a tick in skype's configuration on "run minimized"
         # this hides "floating" main window in tray and keep opened a "tiling" chat window
         # then toggle main window hide/unhide by cllicking on icon in tray
         bindsym s exec skype, mode "default"
-        bindsym x exec smuxi-frontend-gnome, mode "default"
+        bindsym w exec weechat, mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -259,7 +259,7 @@ mode "$ims" {
 }
 
 # settings 
-bindsym $mod+Shift+s mode "$settings"
+bindsym $win+Shift+s mode "$settings"
 set $settings (g)tk ppearance, (q)t appearence, (v)olume, (n)etwork
 mode "$settings" {
         # to configure the GTK appearance of all the whole interface
@@ -276,20 +276,14 @@ mode "$settings" {
         bindsym Escape mode "default"
 }
 
-# mail client
-bindsym $mod+Ctrl+m exec evolution
-
-# video player
-bindsym $mod+Ctrl+v exec vlc
-
 # take a screenshot
-bindsym $mod+Print exec xfce4-screenshooter
+bindsym $win+Print exec xfce4-screenshooter
 
 # translate
 # to RU
-bindsym $mod+Shift+l exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh ru
+bindsym $win+Shift+l exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh ru
 # to EN
-bindsym $mod+Shift+k exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh en
+bindsym $win+Shift+k exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh en
 
 # assign applications to workspaces
 assign [instance="Navigator"] $ws2
@@ -309,7 +303,8 @@ for_window [instance="xfce4-panel"] floating enable
 for_window [instance="wrapper-1.0"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
-for_window [instance="xfce4-terminal" title="^Update packages$"] floating enable
+#for_window [instance="xfce4-terminal" title="^Update packages$"] floating enable
+for_window [instance="xfce4-terminal"] floating enable
 for_window [Class="Vinagre"] floating enable
 for_window [Class="Qemu-.*"] floating enable
 
@@ -331,3 +326,6 @@ exec --no-startup-id xcompmgr -Cc
 
 # Time brakes
 exec --no-startup-id workrave
+
+# CopyQ clipboard manager
+exec --no-startup-id copyq
