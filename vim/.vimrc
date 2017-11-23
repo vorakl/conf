@@ -48,8 +48,8 @@ map <f4> :w <cr>:!/usr/bin/python -m doctest % <cr>
 imap <f4> <c-o>:w<cr><c-o>:!/usr/bin/python -m doctest %<cr>
 map <f5> :w <cr>:!/usr/bin/python % <cr>
 imap <f5> <c-o>:w<cr><c-o>:!/usr/bin/python %<cr>
-map <f6> :w <cr>:!/bin/sh % <cr>
-imap <f6> <c-o>:w<cr><c-o>:!/bin/sh %<cr>
+map <f6> :w <cr>:!/bin/bash % <cr>
+imap <f6> <c-o>:w<cr><c-o>:!/bin/bash %<cr>
 map <f9> :make<cr>
 imap <f9> <c-o>:make<cr><c-o>
 map <f2> :w<cr>
