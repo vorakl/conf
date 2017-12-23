@@ -45,7 +45,7 @@ to the existing example (look at # translation section)
 * redshift
 * xcompmgr
 * xsel
-* xbacklight
+* https://github.com/wavexx/acpilight/
 * feh
 * setxkbmap
 * pavucontrol
