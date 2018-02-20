@@ -310,7 +310,11 @@ for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
 for_window [instance="xfce4-terminal"] floating enable
 for_window [Class="Vinagre"] floating enable
 for_window [Class="Qemu-.*"] floating enable
-for_window [Class="Otter"] floating enable
+
+for_window [Class="Otter"] floating enable                                      
+for_window [Class="Otter"] resize set 1024 800                                  
+for_window [Class="Otter"] move position 100 100
+
 
 ##########################################################################
 #                                  autostart                             #
