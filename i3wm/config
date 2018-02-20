@@ -285,14 +285,17 @@ bindsym $win+Shift+l exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.201608
 # to EN
 bindsym $win+Shift+k exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh en
 
+# Search
+# Wikipedia
+bindsym $win+Shift+i exec --no-startup-id ~/bin/wikipedia.sh en
+bindsym $win+Shift+u exec --no-startup-id ~/bin/wikipedia.sh ru
+# Wiktionary
+bindsym $win+Shift+p exec --no-startup-id ~/bin/wiktionary.sh en
+bindsym $win+Shift+o exec --no-startup-id ~/bin/wiktionary.sh ru
+
+
 # assign applications to workspaces
-assign [instance="Navigator"] $ws2
 assign [class="google-chrome-beta"] $ws2
-assign [class="Opera"] $ws2
-assign [class="Evolution"] $ws3
-assign [class="Skype"] $ws4
-assign [instance="hipchat"] $ws4
-assign [instance="vlc"] $ws5
 
 # open specific applications in floating mode
 for_window [class="Lxappearance"] floating enable
@@ -307,6 +310,7 @@ for_window [instance="skype" title="^vorakl.*Skype™$"] floating enable
 for_window [instance="xfce4-terminal"] floating enable
 for_window [Class="Vinagre"] floating enable
 for_window [Class="Qemu-.*"] floating enable
+for_window [Class="Otter"] floating enable
 
 ##########################################################################
 #                                  autostart                             #
