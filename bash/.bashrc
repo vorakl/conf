@@ -15,9 +15,7 @@ fi
 
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export EDITOR=vim
-export PS1='[$(ec=$?; if [[ $EUID -eq 0 ]]; then echo -e "\[\e[0;31m\]"; else echo -e "\[\e[0;32m\]"; fi; exit $ec)\u\[\e[m\]@\[\e[1;33m
-\]\H\[\e[m\] \[\e[1;34m\]\w\[\e[m\] $(ec=$?; if [[ $ec -eq 0 ]]; then echo "\[\e[0;32m\]$ec\[\e[m\]"; else echo -e "\[\e[0;31m\]$ec\[\e[
-m\]"; fi)]\[\e[m\$\] '
+export PS1='[$(ec=$?; if [[ $EUID -eq 0 ]]; then echo -e "\[\e[0;31m\]"; else echo -e "\[\e[0;32m\]"; fi; exit $ec)\u\[\e[m\]@\[\e[1;33m\]\H\[\e[m\] $(ec=$?; if [[ $ec -eq 0 ]]; then echo "\[\e[0;32m\]$ec\[\e[m\]"; else echo -e "\[\e[0;31m\]$ec\[\e[m\]"; fi) \[\e[1;34m\]\w\[\e[m\]]\n\$ '
 
 alias v='vim'
 alias l='less'
