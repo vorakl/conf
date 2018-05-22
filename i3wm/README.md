@@ -54,6 +54,7 @@ to the existing example (look at # translation section)
 * py3status
 * notification-daemon
 * copyq
+* Otter browser
 
 ### Files
 
