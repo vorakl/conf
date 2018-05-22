@@ -279,12 +279,6 @@ mode "$settings" {
 # take a screenshot
 bindsym $win+Print exec xfce4-screenshooter
 
-# translate
-# to RU
-bindsym $win+Shift+l exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh ru
-# to EN
-bindsym $win+Shift+k exec --no-startup-id env YA_TRANSLATE_API="trnsl.1.1.20160807T201541Z.d37885d10e3c0237.56c88d937e73a5c47dd85b37afd1e043dfb1d44e" ~/bin/ya-translate.sh en
-
 # Search
 # Wikipedia
 bindsym $win+Shift+i exec --no-startup-id ~/bin/wikipedia.sh en
@@ -292,7 +286,9 @@ bindsym $win+Shift+u exec --no-startup-id ~/bin/wikipedia.sh ru
 # Wiktionary
 bindsym $win+Shift+p exec --no-startup-id ~/bin/wiktionary.sh en
 bindsym $win+Shift+o exec --no-startup-id ~/bin/wiktionary.sh ru
-
+# Yandex Translate
+bindsym $win+Shift+l exec --no-startup-id ~/bin/yandex-translate.sh ru
+bindsym $win+Shift+k exec --no-startup-id ~/bin/yandex-translate.sh en
 
 # assign applications to workspaces
 assign [class="google-chrome-beta"] $ws2
