@@ -20,6 +20,10 @@ export PS1='[$(ec=$?; if [[ $EUID -eq 0 ]]; then echo -e "\[\e[0;31m\]"; else ec
 alias v='vim'
 alias l='less'
 alias ll='ls -Al'
+alias dirsync='rsync -a --delete --ignore-existing --progress -v'
+alias toclip='xclip -selection -c -i'
+alias fromclip='xclip -selection -c -o'
+alias py3='pytnon3'
 
 # Colors
 # https://wiki.archlinux.org/index.php/Color_Bash_Prompt_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
