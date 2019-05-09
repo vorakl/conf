@@ -6,6 +6,6 @@ Each component resides in a separate directory with all needed configuration fil
 
 The upcoming installation tool:
 
-.. bash::
+.. code-block:: bash
 
     bash <(curl -s conf.vorakl.name)
