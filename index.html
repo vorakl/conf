@@ -1,0 +1,60 @@
+#!/bin/bash
+
+main() {
+    set_globals
+    get_config_data configs /
+    echo "[${configs[vim]}]"
+    echo "[${!configs[*]}]"
+}
+
+set_globals() {
+    declare -g base_host="localhost"
+    declare -gA configs
+}
+
+stdout_to_arr() {
+    declare -n parr=$1 
+    shift
+    declare cmd="$@"
+
+    IFS=$'\n' read -d '' -a ${!parr} < <(${cmd})
+}
+
+http_get() {
+    declare host="$1" uri="$2" str
+    declare -i body=0
+
+    exec 3<>/dev/tcp/${host}/80
+    printf "GET ${uri} HTTP/1.1\nHost: ${host}\nConnection: close\n\n" >&3
+    while IFS= read -u 3 -r str; do
+        if (( body )); then
+            printf "%s\n" "${str}"
+        else
+            [[ -z "${str%$'\r'}" ]] && body=1
+        fi
+    done
+    exec 3>&-
+}
+
+get_content() {
+    declare -n pitems=$1
+    declare uri=$2
+
+    stdout_to_arr ${!pitems} http_get ${base_host} ${uri} 
+}
+
+get_config_data() {
+    declare -n pdata=$1
+    declare path=$2
+    declare -a res
+    declare key= value=
+
+    get_content res ${path}.index.db
+    for conf in "${res[@]}"; do
+        set -- ${conf}
+        key=$1; shift; value="$@"
+        pdata[$key]="$value"
+    done
+}
+
+main "$@"

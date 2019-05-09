@@ -1,0 +1,8 @@
+bash    (descr:"Bash configs")
+git     (descr:"Git CVS")
+vim     (descr:"Vim editor" \
+         files:"~/.vim/" \
+         install:"mkdir ~/.vim")
+mc      (descr:"Midnight Commander" files:"~/.config/mc")
+i3wm    (descr:"i3 Window Manager")
+tmux    (descr:"Terminal Multiplexer")
