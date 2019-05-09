@@ -2,13 +2,15 @@
 
 main() {
     set_globals
-    get_config_data configs /
-    echo "[${configs[vim]}]"
-    echo "[${!configs[*]}]"
+    [[ -n "$1" ]] && base_uri="$1"
+    normalize_uri base_uri
+
+    get_config_data configs ${base_uri}
+    show_descr configs
 }
 
 set_globals() {
-    declare -g base_host="localhost"
+    declare -g base_host="localhost" base_uri="/"
     declare -gA configs
 }
 
@@ -49,12 +51,31 @@ get_config_data() {
     declare -a res
     declare key= value=
 
-    get_content res ${path}.index.db
+    get_content res ${path}index.db
     for conf in "${res[@]}"; do
         set -- ${conf}
         key=$1; shift; value="$@"
         pdata[$key]="$value"
     done
+}
+
+show_descr() {
+    declare -n pdata=$1
+    declare -A meta
+
+    printf "The configuration available in the ${base_uri}\n\n"
+    for conf in ${!pdata[*]}; do
+        eval meta=${pdata[$conf]}
+        printf "%-8s    %s\n" ${conf} "${meta[descr]}"
+    done
+}
+
+normalize_uri() {
+    declare -n pstr=$1
+
+    pstr="${pstr/#\//}"
+    pstr="${pstr/%\//}"
+    [[ -z "${pstr}" ]] && pstr="/" || pstr="/${pstr}/"
 }
 
 main "$@"
