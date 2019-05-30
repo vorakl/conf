@@ -1,2 +1,0 @@
-colors ([descr]="Color schemas" [files]="~/.vim/colors/")
-vimrc  ([descr]="The main configuration" [files]="~/.vimrc")

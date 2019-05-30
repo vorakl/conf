@@ -1,7 +1,0 @@
-bash    ([descr]="bashrc, prompt, functions, aliases, etc")
-git     ([descr]="basic configuration, aliases")
-vim     ([descr]="hot-keys, colors, basic configuration" \
-         [files]="~/.vim/" \
-         [install]="mkdir ~/.vim")
-mc      ([descr]="Midnight Commander" [files]="~/.config/mc")
-tmux    ([descr]="Terminal Multiplexer")

@@ -1,0 +1,9 @@
+bash    ([info]="bashrc, prompt, functions, aliases, etc")
+git     ([info]="basic configuration, aliases")
+vim     ([info]="hot-keys, colors, basic configuration" \
+         [backup]="~/.vim/" \
+         [install]="[[ -d ~/.vim ]] || mkdir ~/.vim")
+mc      ([info]="Midnight Commander" \
+         [backup]="~/.config/mc" \
+         [install]="[[ -d ~/.config/mc ]] || mkdir ~/.config/mc")
+tmux    ([info]="Terminal Multiplexer")
