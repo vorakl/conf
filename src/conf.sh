@@ -5,7 +5,7 @@ set -o pipefail
 set -o nounset
 set -o errtrace
 
-trap 'echo -e "\nThe stack trace:"; for i in ${!FUNCNAME[*]}; do echo "${FUNCNAME[i]}, line ${BASH_LINENO[i]}, file ${BASH_SOURCE[i]}"; done' ERR
+trap '{ echo -e "\nThe stack trace:"; for i in ${!FUNCNAME[*]}; do echo "${FUNCNAME[i]}, line ${BASH_LINENO[i]}, file ${BASH_SOURCE[i]}"; done; } >&2' ERR
 
 declare base_host="${CONF_BASE_HOST-conf.vorakl.name}"
 declare base_dir="${CONF_BASE_DIR-conf}"
