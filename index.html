@@ -17,7 +17,7 @@ start() {
     normalize_uri base_uri
 
     get_config_data configs ${base_uri}
-    show_descr configs
+    show_info configs
 }
 
 stdout_to_arr() {
@@ -81,7 +81,7 @@ get_config_data() {
     done
 }
 
-show_descr() {
+show_info() {
     declare -n pdata=$1
     declare -A meta=()
 
