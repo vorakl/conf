@@ -1,12 +1,18 @@
 #!/bin/bash
-
+{
 set -o errexit
 set -o pipefail
 set -o nounset
+set -o errtrace
 
-main() {
-    set_globals
+trap 'echo -e "\nThe stack trace:"; for i in ${!FUNCNAME[*]}; do echo "${FUNCNAME[i]}, line ${BASH_LINENO[i]}, file ${BASH_SOURCE[i]}"; done' ERR
 
+declare base_host="${CONF_BASE_HOST-conf.vorakl.name}"
+declare base_dir="${CONF_BASE_DIR-conf}"
+declare base_uri="/"
+declare -A configs
+
+start() {
     [[ -n "${1-}" ]] && base_uri="$1"
     normalize_uri base_uri
 
@@ -14,23 +20,22 @@ main() {
     show_descr configs
 }
 
-set_globals() {
-    declare -g base_host="${CONF_BASE_HOST-conf.vorakl.name}"
-    declare -g base_uri="/"
-    declare -gA configs
-}
-
 stdout_to_arr() {
     declare -n parr=$1 
     shift
     declare cmd="$@"
 
-    IFS=$'\n' read -d '' -a parr < <(${cmd}) || true
+    # this OR list checks whether 'read' managed to get data or not
+    IFS=$'\n' read -d '' -a parr < <(${cmd}) || (( ${#parr[*]} ))
 }
 
 http_get() {
-    declare host="$1" uri="$2" str
+    declare host="$1" uri="$2" str=
     declare -i body=0
+    declare -n perrcode="$3"
+    declare -n perrmsg="$4"
+
+    trap 'echo "ERROR: HTTP error code ${perrcode}: ${errmsg}" >&2' ERR
 
     exec {sock}<>/dev/tcp/${host}/80
     printf "GET ${uri} HTTP/1.1\nHost: ${host}\nConnection: close\n\n" >&${sock}
@@ -38,6 +43,16 @@ http_get() {
         if (( body )); then
             printf "%s\n" "${str}"
         else
+            if [[ "${str%$'\r'}" =~ ^HTTP/ ]]; then
+                set -- ${str%$'\r'}
+                shift; perrcode=$1; shift
+                perrmsg="$@"
+                if (( ${perrcode} != 200 )); then
+                    exec {sock}<&-
+                    false # trigger error trap
+                    return 1
+                fi
+            fi
             [[ -z "${str%$'\r'}" ]] && body=1
         fi
     done
@@ -47,17 +62,18 @@ http_get() {
 get_content() {
     declare -n pitems=$1
     declare uri=$2
+    declare errcode= errmsg=
 
-    stdout_to_arr pitems http_get ${base_host} ${uri} 
+    stdout_to_arr pitems http_get ${base_host} ${uri} errcode errmsg
 }
 
 get_config_data() {
     declare -n pdata=$1
     declare path=$2
-    declare -a res
+    declare -a res=()
     declare key= value=
 
-    get_content res /conf${path}conf.db
+    get_content res /${base_dir}${path}conf.db
     for conf in "${res[@]}"; do
         set -- ${conf}
         key=$1; shift; value="$@"
@@ -67,7 +83,7 @@ get_config_data() {
 
 show_descr() {
     declare -n pdata=$1
-    declare -A meta
+    declare -A meta=()
 
     printf "The configuration available in the ${base_uri}\n\n"
     for conf in ${!pdata[*]}; do
@@ -84,4 +100,5 @@ normalize_uri() {
     [[ -z "${pstr}" ]] && pstr="/" || pstr="/${pstr}/"
 }
 
-main "$@"
+start "$@"
+}
