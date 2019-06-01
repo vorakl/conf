@@ -5,17 +5,21 @@ set -o pipefail
 set -o nounset
 set -o errtrace
 
-trap '{ echo -e "\nThe stack trace:"; for i in ${!FUNCNAME[*]}; do echo "${FUNCNAME[i]}, line ${BASH_LINENO[i]}, file ${BASH_SOURCE[i]}"; done; } >&2' ERR
+trap '{ echo -e "\nThe stack trace:"
+        for i in ${!FUNCNAME[*]}; do 
+           echo "${FUNCNAME[i]}, line ${BASH_LINENO[i]}, file ${BASH_SOURCE[i]}"
+        done; } >&2' ERR
 
 declare base_host="${CONF_BASE_HOST-conf.vorakl.name}"
 declare base_dir="${CONF_BASE_DIR-conf}"
 declare base_uri="/"
-declare -A configs
+declare -A configs=()
 
 start() {
-    [[ -n "${1-}" ]] && base_uri="$1"
+    if [[ -n "${1-}" ]]; then
+        base_uri="$1"
+    fi
     normalize_uri base_uri
-
     get_config_data configs ${base_uri}
     show_info configs
 }
