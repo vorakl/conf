@@ -14,15 +14,37 @@ declare base_host="${CONF_BASE_HOST-conf.vorakl.name}"
 declare base_dir="${CONF_BASE_DIR-conf}"
 declare base_uri="/"
 declare -A configs=()
+declare -r bin_name=${0##*/}
 
 start() {
+    declare print_usage=0 cmd=
+
+    case "${1-}" in
+        [iI][nN][fF][oO]) cmd="info"
+                          shift || true
+                          ;;
+        *) print_usage=1
+           cmd="info"
+           ;;
+    esac
     if [[ -n "${1-}" ]]; then
         base_uri="$1"
     fi
+
     normalize_uri base_uri
     get_config_data configs ${base_uri}
     show_info configs
+
+    if (( print_usage )); then
+        usage
+    fi
 }
+
+usage() {
+    printf "\nUsage: %s [command] [path]\n" "${bin_name}"
+    printf "Commands:\n"
+    printf "  info\t\tPrint information about an item [default]\n\n"
+} >&2
 
 stdout_to_arr() {
     declare -n parr=$1 
@@ -72,8 +94,8 @@ get_content() {
 }
 
 get_config_data() {
-    declare -n pdata=$1
-    declare path=$2
+    declare -n pdata="$1"
+    declare path="$2"
     declare -a res=()
     declare key= value=
 
@@ -89,7 +111,7 @@ show_info() {
     declare -n pdata=$1
     declare -A meta=()
 
-    printf "The configuration available in the ${base_uri}\n\n"
+    printf "The configuration available at the ${base_uri}\n\n"
     for conf in ${!pdata[*]}; do
         eval meta=${pdata[$conf]}
         printf "%-8s    %s\n" ${conf} "${meta[info]}"
