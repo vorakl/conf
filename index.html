@@ -17,14 +17,14 @@ declare -A configs=()
 declare -r bin_name=${0##*/}
 
 start() {
-    declare print_usage=0 cmd=
+    declare _print_usage=0 _cmd=
 
     case "${1-}" in
-        [iI][nN][fF][oO]) cmd="info"
+        [iI][nN][fF][oO]) _cmd="info"
                           shift || true
                           ;;
-        *) print_usage=1
-           cmd="info"
+        *) _print_usage=1
+           _cmd="info"
            ;;
     esac
     if [[ -n "${1-}" ]]; then
@@ -33,9 +33,16 @@ start() {
 
     normalize_uri base_uri
     get_config_data configs ${base_uri}
-    show_info configs
 
-    if (( print_usage )); then
+    case "${_cmd}" in
+        info) cmd_info configs
+              ;;
+        *) echo "ERROR: unknown command '${_cmd-undef}'" >&2
+           exit 1
+           ;;
+    esac
+
+    if (( _print_usage )); then
         usage
     fi
 }
@@ -47,83 +54,83 @@ usage() {
 } >&2
 
 stdout_to_arr() {
-    declare -n parr=$1 
+    declare -n _parr=$1 
     shift
-    declare cmd="$@"
+    declare _cmd="$@"
 
     # this OR list checks whether 'read' managed to get data or not
-    IFS=$'\n' read -d '' -a parr < <(${cmd}) || (( ${#parr[*]} ))
+    IFS=$'\n' read -d '' -a _parr < <(${_cmd}) || (( ${#_parr[*]} ))
 }
 
 http_get() {
-    declare host="$1" uri="$2" str=
-    declare -i body=0
-    declare -n perrcode="$3"
-    declare -n perrmsg="$4"
+    declare _host="$1" _uri="$2" _str=
+    declare -i _body=0
+    declare -n _perrcode="$3"
+    declare -n _perrmsg="$4"
 
-    trap 'echo "ERROR: HTTP error code ${perrcode}: ${errmsg}" >&2' ERR
+    trap 'echo "ERROR: HTTP error code ${_perrcode}: ${_errmsg}" >&2' ERR
 
-    exec {sock}<>/dev/tcp/${host}/80
-    printf "GET ${uri} HTTP/1.1\nHost: ${host}\nConnection: close\n\n" >&${sock}
-    while IFS= read -u ${sock} -r str; do
-        if (( body )); then
-            printf "%s\n" "${str}"
+    exec {sock}<>/dev/tcp/${_host}/80
+    printf "GET ${_uri} HTTP/1.1\nHost: ${_host}\nConnection: close\n\n" >&${sock}
+    while IFS= read -u ${sock} -r _str; do
+        if (( _body )); then
+            printf "%s\n" "${_str}"
         else
-            if [[ "${str%$'\r'}" =~ ^HTTP/ ]]; then
-                set -- ${str%$'\r'}
-                shift; perrcode=$1; shift
-                perrmsg="$@"
-                if (( ${perrcode} != 200 )); then
+            if [[ "${_str%$'\r'}" =~ ^HTTP/ ]]; then
+                set -- ${_str%$'\r'}
+                shift; _perrcode=$1; shift
+                _perrmsg="$@"
+                if (( ${_perrcode} != 200 )); then
                     exec {sock}<&-
                     false # trigger error trap
                     return 1
                 fi
             fi
-            [[ -z "${str%$'\r'}" ]] && body=1
+            [[ -z "${_str%$'\r'}" ]] && _body=1
         fi
     done
     exec {sock}<&-
 }
 
 get_content() {
-    declare -n pitems=$1
-    declare uri=$2
-    declare errcode= errmsg=
+    declare -n _pitems=$1
+    declare _uri=$2
+    declare _errcode= _errmsg=
 
-    stdout_to_arr pitems http_get ${base_host} ${uri} errcode errmsg
+    stdout_to_arr _pitems http_get ${base_host} ${_uri} _errcode _errmsg
 }
 
 get_config_data() {
-    declare -n pdata="$1"
-    declare path="$2"
-    declare -a res=()
-    declare key= value=
+    declare -n _pdata="$1"
+    declare _path="$2"
+    declare -a _res=()
+    declare _key= _value=
 
-    get_content res /${base_dir}${path}conf.db
-    for conf in "${res[@]}"; do
-        set -- ${conf}
-        key=$1; shift; value="$@"
-        pdata[$key]="$value"
-    done
-}
-
-show_info() {
-    declare -n pdata=$1
-    declare -A meta=()
-
-    printf "The configuration available at the ${base_uri}\n\n"
-    for conf in ${!pdata[*]}; do
-        eval meta=${pdata[$conf]}
-        printf "%-8s    %s\n" ${conf} "${meta[info]}"
+    get_content _res /${base_dir}${_path}conf.db
+    for _conf in "${_res[@]}"; do
+        set -- ${_conf}
+        _key=$1; shift; _value="$@"
+        _pdata[${_key}]="${_value}"
     done
 }
 
 normalize_uri() {
-    declare -n pstr=$1
+    declare -n _pstr=$1
 
-    pstr="${pstr/#\//}"
-    pstr="${pstr/%\//}"
-    [[ -z "${pstr}" ]] && pstr="/" || pstr="/${pstr}/"
+    _pstr="${_pstr/#\//}"
+    _pstr="${_pstr/%\//}"
+    [[ -z "${_pstr}" ]] && _pstr="/" || _pstr="/${_pstr}/"
+}
+
+cmd_info() {
+    declare -n _pdata=$1
+    declare -A _meta=()
+
+    printf "The configuration available at the ${base_uri}\n\n"
+    for _conf in ${!_pdata[*]}; do
+        eval _meta=${_pdata[$_conf]}
+        printf "%-8s    %s\n" ${_conf} "${_meta[info]}"
+    done
 }
 
 start "$@"
