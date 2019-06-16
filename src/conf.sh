@@ -14,7 +14,6 @@ declare base_host="${CONF_BASE_HOST-conf.vorakl.name}"
 declare base_dir="${CONF_BASE_DIR-conf}"
 declare base_uri="/"
 declare -A configs=()
-declare -r bin_name=${0##*/}
 
 start() {
     declare _print_usage=0 _cmd=
@@ -48,7 +47,7 @@ start() {
 }
 
 usage() {
-    printf "\nUsage: %s [command] [path]\n" "${bin_name}"
+    printf "\nUsage: conf.sh [command] [path]\n"
     printf "Commands:\n"
     printf "  info\t\tPrint information about an item [default]\n\n"
 } >&2
