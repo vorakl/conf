@@ -20,7 +20,6 @@ export PS1='[$(ec=$?; if [[ $EUID -eq 0 ]]; then echo -e "\[\e[0;31m\]"; else ec
 alias v='vim'
 alias l='less'
 alias ll='ls -Al'
-alias dirsync='rsync -a --delete --ignore-existing --progress -v'
 alias toclip='xclip -selection -c -i'
 alias fromclip='xclip -selection -c -o'
 alias py3='pytnon3'
