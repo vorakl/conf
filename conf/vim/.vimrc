@@ -30,7 +30,8 @@ map <F8> :emenu Encoding.<TAB>
 
 set timeoutlen=450
 set nocompatible
-set nolist
+set list
+set listchars=eol:·,tab:\¯\¯
 set nobackup
 set noswapfile
 set laststatus=2
@@ -44,12 +45,14 @@ set cursorcolumn
 
 map <f3> :w <cr>:!/usr/bin/pep8 % <cr>
 imap <f3> <c-o>:w<cr><c-o>:!/usr/bin/pep8 %<cr>
-map <f4> :w <cr>:!/usr/bin/python -m doctest % <cr>
-imap <f4> <c-o>:w<cr><c-o>:!/usr/bin/python -m doctest %<cr>
-map <f5> :w <cr>:!/usr/bin/python % <cr>
-imap <f5> <c-o>:w<cr><c-o>:!/usr/bin/python %<cr>
+map <f4> :w <cr>:!/usr/bin/python3 -m doctest % <cr>
+imap <f4> <c-o>:w<cr><c-o>:!/usr/bin/python3 -m doctest %<cr>
+map <f5> :w <cr>:!/usr/bin/python3 % <cr>
+imap <f5> <c-o>:w<cr><c-o>:!/usr/bin/python3 %<cr>
 map <f6> :w <cr>:!/bin/bash % <cr>
 imap <f6> <c-o>:w<cr><c-o>:!/bin/bash %<cr>
+map <f7> :w <cr>:!./% <cr>
+imap <f7> <c-o>:w<cr><c-o>:!./%<cr>
 map <f9> :make<cr>
 imap <f9> <c-o>:make<cr><c-o>
 map <f2> :w<cr>
@@ -79,3 +82,10 @@ nnoremap <c-n> :NERDTreeToggle<cr>
 inoremap <c-n> <c-o>:NERDTreeToggle<cr>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
