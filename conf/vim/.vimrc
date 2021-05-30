@@ -1,4 +1,5 @@
 set expandtab
+set number
 set shiftwidth=4
 set softtabstop=4
 set autoindent
@@ -8,8 +9,13 @@ set encoding=utf-8
 set fileencodings=utf-8
 set termencoding=utf-8
 
-colorscheme miromiro
 set background=dark
+set t_Co=256
+set termguicolors
+let g:alduin_Shout_Fire_Breath = 1
+let g:alduin_Shout_Aura_Whisper = 1
+colorscheme alduin
+
 set synmaxcol=2048
 execute pathogen#infect()
 syntax on
@@ -22,11 +28,13 @@ highlight ColorColumn ctermbg=grey guibg=grey
 
 set wildmenu
 set wcm=<Tab>
-menu Encoding.CP1251   :e ++enc=cp1251<CR>
-menu Encoding.CP866    :e ++enc=cp866<CR>
-menu Encoding.KOI8-U   :e ++enc=koi8-u<CR>
-menu Encoding.UTF-8    :e ++enc=utf-8<CR>
-map <F8> :emenu Encoding.<TAB>
+menu Formating.Off         :set nonumber<CR>:set listchars=<CR>
+menu Formating.On          :set number<CR>:set listchars=eol:·,tab:\¯\¯<CR>
+menu Formating.Number      :set number<CR>
+menu Formating.NoNumber    :set nonumber<CR>
+menu Formating.EOLchar     :set listchars=eol:·,tab:\¯\¯<CR>
+menu Formating.noEOLchar   :set listchars=tab:\¯\¯<CR>
+map <F3> :emenu Formating.<TAB>
 
 set timeoutlen=450
 set nocompatible
@@ -43,20 +51,20 @@ set showmode
 set cursorline
 set cursorcolumn
 
-map <f3> :w <cr>:!/usr/bin/pep8 % <cr>
-imap <f3> <c-o>:w<cr><c-o>:!/usr/bin/pep8 %<cr>
-map <f4> :w <cr>:!/usr/bin/python3 -m doctest % <cr>
-imap <f4> <c-o>:w<cr><c-o>:!/usr/bin/python3 -m doctest %<cr>
+map <f4> :w <cr>:!/usr/bin/python3 -m pudb % <cr>
+imap <f4> <c-o>:w<cr><c-o>:!/usr/bin/python3 -m pudb %<cr>
 map <f5> :w <cr>:!/usr/bin/python3 % <cr>
 imap <f5> <c-o>:w<cr><c-o>:!/usr/bin/python3 %<cr>
 map <f6> :w <cr>:!/bin/bash % <cr>
 imap <f6> <c-o>:w<cr><c-o>:!/bin/bash %<cr>
 map <f7> :w <cr>:!./% <cr>
 imap <f7> <c-o>:w<cr><c-o>:!./%<cr>
-map <f9> :make<cr>
-imap <f9> <c-o>:make<cr><c-o>
+map <f8> :make<cr>
+imap <f8> <c-o>:make<cr><c-o>
 map <f2> :w<cr>
 imap <f2> <c-o>:w<cr>
+map <f9> :!cat %<cr>
+imap <f9> <c-o>:! %<cr>
 map <f10> :q!<CR>
 imap <f10> <Esc>:q!<CR>
 cmap Q q
@@ -80,6 +88,8 @@ nnoremap <c-t> :tabnew<cr>
 inoremap <c-t> <c-o>:tabnew<cr>
 nnoremap <c-n> :NERDTreeToggle<cr>
 inoremap <c-n> <c-o>:NERDTreeToggle<cr>
+nnoremap <c-l> :set number<cr>
+inoremap <c-l> <c-o>:set number<cr>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
