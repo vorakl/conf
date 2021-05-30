@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set expandtab
 set number
 set shiftwidth=4
@@ -10,21 +12,19 @@ set fileencodings=utf-8
 set termencoding=utf-8
 
 set background=dark
-set t_Co=256
 set termguicolors
-let g:alduin_Shout_Fire_Breath = 1
-let g:alduin_Shout_Aura_Whisper = 1
-colorscheme alduin
+" colorscheme miromiro
+" Gruvbox: https://github.com/morhetz/gruvbox/wiki/Installation 
+autocmd vimenter * ++nested colorscheme gruvbox
+let g:gruvbox_contrast_dark="medium"  "options: soft, medium, hard
 
 set synmaxcol=2048
-execute pathogen#infect()
 syntax on
 filetype on
 filetype plugin on
 filetype plugin indent on
 
 set colorcolumn=80
-highlight ColorColumn ctermbg=grey guibg=grey
 
 set wildmenu
 set wcm=<Tab>
