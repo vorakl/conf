@@ -13,10 +13,9 @@ set termencoding=utf-8
 
 set background=dark
 set termguicolors
-" colorscheme miromiro
 " Gruvbox: https://github.com/morhetz/gruvbox/wiki/Installation 
+let g:gruvbox_contrast_dark = "soft"  "options: soft, medium, hard
 autocmd vimenter * ++nested colorscheme gruvbox
-let g:gruvbox_contrast_dark="medium"  "options: soft, medium, hard
 
 set synmaxcol=2048
 syntax on
